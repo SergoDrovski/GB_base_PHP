@@ -22,7 +22,7 @@ class Mysql
     }
 
 
-    public function query($sql, array $datas)
+    public function query($sql, array $datas = [])
     {
 //        $result = $this->connect->prepare($sql);
 //        $datas = $result->bind_param($datas);

@@ -157,7 +157,7 @@
             <?php foreach ($collect as $id => $photo): ?>
                 <div class="col-sm-3">
                     <div class="card" style="width: 100%; margin-top: 15px; min-width: 150px;">
-                        <img src="<?php echo $path . $photo ?>" class="card-img-top" alt="...">
+                        <img src="photo/small/<?php echo $photo['title'] ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">Some example text.</p>
                         </div>
@@ -166,7 +166,23 @@
             <?php endforeach ?>
         <?php endif ?>
     </div>
+    <br>
+    <div style="margin-bottom: 25px;" class="row">
+        <h2 id="file-input">Выбор файла</h2>
+        <div class="bd-example">
+            <form enctype="multipart/form-data" method="post" action="/">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Default file input example</label>
+                    <input class="form-control" accept="image/gif" name="photo" type="file" id="formFile">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>
+
+
 
 <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
