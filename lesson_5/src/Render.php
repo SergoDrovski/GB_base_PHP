@@ -4,7 +4,7 @@ namespace Src;
 
 class Render
 {
-    public string $path;
+    private string $path;
 
     public function __construct ($path)
     {
