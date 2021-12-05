@@ -154,12 +154,13 @@
 
     <div class="row">
         <?php if (!empty($collect)): ?>
-            <?php foreach ($collect as $id => $photo): ?>
+            <?php foreach ($collect as $photo): ?>
                 <div class="col-sm-3">
                     <div class="card" style="width: 100%; margin-top: 15px; min-width: 150px;">
-                        <img src="photo/small/<?php echo $photo['title'] ?>" class="card-img-top" alt="...">
+                        <img  src="photo/small/<?php echo $photo['title'] ?>" class="card-img-top" alt="<?php echo $photo['alt'] ?>">
                         <div class="card-body">
                             <p class="card-text">Some example text.</p>
+                            <button type="button" class="btn btn-outline-danger img-delete" data-id="<?php echo $photo['id'] ?>">Удалить</button>
                         </div>
                     </div>
                 </div>
@@ -172,8 +173,7 @@
         <div class="bd-example">
             <form enctype="multipart/form-data" method="post" action="/">
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" accept="image/gif" name="photo" type="file" id="formFile">
+                    <input class="form-control" accept="image/*" name="photo" type="file" id="formFile">
                     <button type="submit" class="btn btn-primary">Отправить</button>
                 </div>
             </form>
@@ -191,20 +191,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               <img src="#" style="    max-width: 100%;
-    height: auto;">
+               <img alt="" src="#" style="max-width: 100%; height: auto;">
             </div>
             <div class="modal-footer">
-<!--                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>-->
             </div>
         </div>
     </div>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
@@ -212,15 +208,36 @@
     var myModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'), {
         keyboard: false
     });
+    function basename(path, suffix){
+        let p = path.split( /[\/\\]/ ), name = p[p.length-1];
+        return ('string'!=typeof suffix) ? name :
+        name.replace(new RegExp(suffix.replace('.', '\\.')+'$'),'');
+    }
 
-    $('.card').on('click', function (e) {
-        debugger
-        let item = $(this);
-        let img = item.find('.card-img-top');
-        let src = img[0].src;
-        $('#exampleModalToggle img').attr('src', src);
+    $('.card-img-top').on('click', function (e) {
+        let img = $(this);
+        let src = basename(img[0].src);
+        $('#exampleModalToggle img').attr('src', `photo/big/${src}`);
         myModal.show();
     });
+
+    $( document ).ready(function(){
+        $('.img-delete').click(function(){
+            let id = $(this).data('id');
+
+            $.ajax({
+                method: "POST",
+                url: "index.php",
+                data: {
+                    idImg: id
+                },
+                success: function(result){
+                    location.reload();
+                }
+            })
+        });
+    });
+
 </script>
 </body>
 </html>

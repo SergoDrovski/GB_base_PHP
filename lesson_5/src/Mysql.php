@@ -6,7 +6,7 @@ class Mysql
 {
     private $connect;
     private int $password = 12345678;
-    private string $username = 'user';
+    private string $username = 'root';
     private string $nameDB = 'testDB';
     private string $server = 'localhost';
 
@@ -22,16 +22,24 @@ class Mysql
     }
 
 
-    public function query($sql, array $datas = [])
+    public function query($sql, $method, array $data = [])
     {
-//        $result = $this->connect->prepare($sql);
-//        $datas = $result->bind_param($datas);
-        $result = $this->connect->query($sql);
+        $stmt = $this->connect -> prepare($sql);
+        if (!empty($data)){
+            $stmt -> bind_param($data[0], ...$data[1]);
+        }
+        $stmt->execute();
+        if (in_array($method, ['UPDATE','DELETE','INSERT'])) {
+            $result = $stmt->affected_rows;
+        } else {
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        }
         if (!$result) {
             header("HTTP/1.0 500 Internal Server Error");
             die("Mysql error: " . $this->connect->error);
         }
-        return is_bool($result) ? $result : $result->fetch_all(MYSQLI_ASSOC);
+        $stmt -> close();
+        return $result;
     }
 
     public function first($sql)
@@ -42,5 +50,4 @@ class Mysql
         }
         return $query[0];
     }
-
 }
