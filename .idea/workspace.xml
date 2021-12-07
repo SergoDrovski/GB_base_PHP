@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b4dcaa43-8966-4174-aa59-342172639245" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/lesson_5/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/lesson_5/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/aedrian-3xl38-PKMkM-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/erik-skof-cz_kF16nY_I-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/error-420-q8DovYzpoR8-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/eugene-ga-FjPLjD5cDDU-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/handsup-u-DTW50sBa-Bo-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/jessie-sorenson-M7jr_1lBoKk-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/jon-tyson-JXxijhi0gV8-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/jon-tyson-wjgBTjlBr5s-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/max-boldyrev-gGLYnJ2LgfY-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/shri-6GV94wLrI8s-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/photo/sour-moha-4Q7KEN7PfUY-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/src/Mysql.php" beforeDir="false" afterPath="$PROJECT_DIR$/lesson_5/src/Mysql.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson_5/templates/gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/lesson_5/templates/gallery.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="21mK8IJxh8yL3DfOEsTKklsiLlv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b4dcaa43-8966-4174-aa59-342172639245" name="Changes" comment="" />
+      <created>1638540661799</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638540661799</updated>
+      <workItem from="1638540663945" duration="3146000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
