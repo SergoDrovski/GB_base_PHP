@@ -4,7 +4,7 @@ namespace Src;
 
 class Mysql
 {
-    private $connect;
+    public $connect;
     private int $password = 12345678;
     private string $username = 'root';
     private string $nameDB = 'testDB';

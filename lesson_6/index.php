@@ -15,25 +15,40 @@ $request_url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $param = [];
 
 
-
 if ($request_method == 'GET') {
     if ($request_url === '/') {
         $sql = "SELECT goods.id , title_good, description, quantity, price, title_img
-                FROM goods INNER JOIN images ON goods.id = images.good_id";
+                FROM goods INNER JOIN images ON goods.id = images.good_id where preview = 1";
         $query = $connect->query($sql, 'SELECT');
         $collect = [];
         $param['collect'] = $query;
-//        echo '<pre>';
-//        var_dump($query);
-//        die();
-        $content = $render->showPage('views/main.phtml', $param);
+
+        $content = $render->showPage('views/goods.phtml', $param);
         echo $render->showPage('layouts/index.phtml', ['content' => $content]);
         die();
     }
+    if ($request_url === '/product/') {
+        $request_data = $_GET;
+        $id = (int) $request_data['id'];
+
+        $sql = "SELECT goods.id , title_good, description, quantity, price, group_concat(title_img) as title_img
+FROM goods INNER JOIN images ON goods.id = images.good_id where goods.id ={$id}";
+        $query = $connect->query($sql, 'SELECT');
+        $param = $query[0];
+
+//        echo "<pre>";
+//        var_dump($param);
+//        exit();
+
+        $content = $render->showPage('views/product.phtml', $param);
+        echo $render->showPage('layouts/index.phtml', ['content' => $content]);
+        die();
+    }
+
 }
 
 if ($request_method == 'POST') {
-    if (preg_match('/multipart\/form-data/m', $_SERVER['CONTENT_TYPE'])) {
+    if ($request_url === '/product/') {
         $request_data = $_FILES;
         $pathPhoto = ROOT_PATH . "/photo/big/";
         $name = basename($request_data['photo']['name']);

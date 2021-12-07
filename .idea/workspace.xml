@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4dcaa43-8966-4174-aa59-342172639245" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/lesson_5/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/lesson_5/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/aedrian-3xl38-PKMkM-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/erik-skof-cz_kF16nY_I-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/error-420-q8DovYzpoR8-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/eugene-ga-FjPLjD5cDDU-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/handsup-u-DTW50sBa-Bo-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/jessie-sorenson-M7jr_1lBoKk-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/jon-tyson-JXxijhi0gV8-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/jon-tyson-wjgBTjlBr5s-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/max-boldyrev-gGLYnJ2LgfY-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/shri-6GV94wLrI8s-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/photo/sour-moha-4Q7KEN7PfUY-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/src/Mysql.php" beforeDir="false" afterPath="$PROJECT_DIR$/lesson_5/src/Mysql.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson_5/templates/gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/lesson_5/templates/gallery.php" afterDir="false" />
-    </list>
+    <list default="true" id="b4dcaa43-8966-4174-aa59-342172639245" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638540661799</updated>
       <workItem from="1638540663945" duration="3146000" />
+      <workItem from="1638863036284" duration="632000" />
     </task>
     <servers />
   </component>
