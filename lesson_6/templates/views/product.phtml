@@ -5,7 +5,7 @@
                 <div class="single-product-img">
                     <div class="swiper-container single-product-slider">
                         <div class="swiper-wrapper">
-                            <?php $collect = explode(',', $title_img); ?>
+                            <?php $collect = explode(',', $product['title_img']); ?>
                             <?php foreach ($collect as $img): ?>
                             <div class="swiper-slide">
                                 <a href="../templates/layouts/ass/images/product/large-size/1-1-570x633.jpg" class="single-img gallery-popup">
@@ -19,7 +19,7 @@
                     <div class="thumbs-arrow-holder">
                         <div class="swiper-container single-product-thumbs">
                             <div class="swiper-wrapper">
-                                <?php $collect = explode(',', $title_img); ?>
+                                <?php $collect = explode(',', $product['title_img']); ?>
                                 <?php foreach ($collect as $img): ?>
                                     <a href="#" class="swiper-slide">
                                         <img class="img-full" src="../photo/big/<?php echo $img ?>" alt="Product Thumnail">
@@ -41,9 +41,9 @@
             </div>
             <div class="col-lg-6 pt-5 pt-lg-0">
                 <div class="single-product-content">
-                    <h2 class="title"><?php echo $title_good ?></h2>
+                    <h2 class="title"><?php echo $product['title_good'] ?></h2>
                     <div class="price-box">
-                        <span class="new-price"><?php echo $price ?> руб.</span>
+                        <span class="new-price"><?php echo $product['price'] ?> руб.</span>
                     </div>
                     <div class="rating-box-wrap">
                         <div class="rating-box">
@@ -76,7 +76,7 @@
                             <option value="small">Small Size With Poot</option>
                         </select>
                     </div>
-                    <p class="short-desc"><?php echo $description ?></p>
+                    <p class="short-desc"><?php echo $product['description'] ?></p>
                     <ul class="quantity-with-btn">
                         <li class="quantity">
                             <div class="cart-plus-minus">
@@ -175,6 +175,99 @@
                                 </a>
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="product-tab-area section-space-top-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
+
+                    <li class="nav-item" role="presentation">
+                        <a class="active tab-btn" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">
+                            Description
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="tab-btn" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">
+                            Reviews(<?php echo count($reviews); ?>)
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content product-tab-content">
+                    <div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
+                        <div class="product-information-body">
+                            <h4 class="title">Shipping</h4>
+                            <p class="short-desc mb-4">The item will be shipped from China. So it need 15-20 days to
+                                deliver. Our product is good with reasonable price and we believe you will worth it.
+                                So please wait for it patiently! Thanks.Any question please kindly to contact us and
+                                we promise to work hard to help you to solve the problem</p>
+                            <h4 class="title">About return request</h4>
+                            <p class="short-desc mb-4">If you don't need the item with worry, you can contact us
+                                then we will help you to solve the problem, so please close the return request!
+                                Thanks</p>
+                            <h4 class="title">Guarantee</h4>
+                            <p class="short-desc mb-0">If it is the quality question, we will resend or refund to
+                                you; If you receive damaged or wrong items, please contact us and attach some
+                                pictures about product, we will exchange a new correct item to you after the
+                                confirmation.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        <div class="product-description-body">
+                            <p class="short-desc mb-0"><?php echo $product['description']; ?></p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                        <div class="product-review-body">
+                            <div class="blog-comment mt-0">
+                                <h4 class="heading">Comments (<?php echo count($reviews); ?>)</h4>
+                                <?php foreach ($reviews as $rev): ?>
+                                    <div class="blog-comment-item ">
+                                            <div class="blog-comment-img">
+                                                <img src="../templates/layouts/ass/images/blog/avatar/avatar-svgrepo-com.svg" alt="User Image">
+                                            </div>
+                                            <div class="blog-comment-content">
+                                                <div class="user-meta">
+                                                    <h2 class="user-name"><?php echo $rev['name']; ?></h2>
+                                                    <span class="date"><?php echo $rev['date']; ?></span>
+                                                </div>
+                                                <p class="user-comment"><?php echo $rev['text']; ?></p>
+<!--                                                <a class="btn btn-custom-size comment-btn" href="#">Reply</a>-->
+                                            </div>
+                                        </div>
+                                <?php endforeach ?>
+                            </div>
+                            <div class="feedback-area">
+                                <h2 class="heading">Leave a comment</h2>
+                                <form class="feedback-form" method="post" action="/product/rev">
+                                    <div class="group-input">
+                                        <div class="form-field me-md-30 mb-30 mb-md-0">
+                                            <input type="text" name="name" placeholder="Your Name*" class="input-field">
+                                        </div>
+                                        <div class="form-field">
+<!--                                            <input type="text" name="email" placeholder="Your Email*" class="input-field">-->
+                                        </div>
+                                    </div>
+                                    <div class="form-field mt-30">
+<!--                                        <input type="text" name="subject" placeholder="Subject (Optinal)" class="input-field">-->
+                                    </div>
+                                    <div class="form-field mt-30">
+                                        <textarea name="text" placeholder="Message" class="textarea-field"></textarea>
+                                    </div>
+                                    <input type="hidden" name="goods_id" class="input-field" value="<?php echo $product['id']; ?>">
+
+                                    <div class="button-wrap pt-5">
+                                        <button type="submit" value="submit" class="btn btn-custom-size xl-size btn-pronia-primary" name="submit">Post
+                                            Comment</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

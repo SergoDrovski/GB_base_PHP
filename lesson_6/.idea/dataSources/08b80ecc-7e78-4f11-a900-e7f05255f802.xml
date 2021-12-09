@@ -1062,83 +1062,172 @@ testDB|schema||user|localhost|UPDATE|G</Grants>
       <Plugin>caching_sha2_password</Plugin>
     </user>
     <table id="285" parent="278" name="goods"/>
-    <table id="286" parent="278" name="images"/>
-    <column id="287" parent="285" name="id">
+    <table id="286" parent="278" name="goods1"/>
+    <table id="287" parent="278" name="images"/>
+    <table id="288" parent="278" name="reviews"/>
+    <column id="289" parent="285" name="id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="288" parent="285" name="title_good">
+    <column id="290" parent="285" name="title_good">
       <DataType>varchar(100)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="289" parent="285" name="description">
+    <column id="291" parent="285" name="description">
       <DataType>varchar(250)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="290" parent="285" name="price">
+    <column id="292" parent="285" name="price">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="291" parent="285" name="quantity">
+    <column id="293" parent="285" name="quantity">
       <DataType>int|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="292" parent="285" name="category_id">
+    <column id="294" parent="285" name="category_id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <key id="293" parent="285" name="PRIMARY">
+    <key id="295" parent="285" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="294" parent="286" name="id">
+    <column id="296" parent="286" name="id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="295" parent="286" name="title_img">
-      <DataType>varchar(50)|0s</DataType>
+    <column id="297" parent="286" name="title_good">
+      <DataType>varchar(100)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="296" parent="286" name="alt">
-      <DataType>varchar(30)|0s</DataType>
+    <column id="298" parent="286" name="description">
+      <DataType>varchar(250)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="297" parent="286" name="count">
+    <column id="299" parent="286" name="price">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="298" parent="286" name="size">
+    <column id="300" parent="286" name="quantity">
       <DataType>int|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="299" parent="286" name="good_id">
+    <column id="301" parent="286" name="category_id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="300" parent="286" name="preview">
-      <DataType>tinyint(1)|0s</DataType>
-      <Position>7</Position>
-    </column>
-    <foreign-key id="301" parent="286" name="images_ibfk_1">
-      <ColNames>good_id</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>goods</RefTableName>
-    </foreign-key>
-    <index id="302" parent="286" name="good_id">
-      <ColNames>good_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="303" parent="286" name="PRIMARY">
+    <key id="302" parent="286" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+    </key>
+    <column id="303" parent="287" name="id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="304" parent="287" name="title_img">
+      <DataType>varchar(50)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="305" parent="287" name="alt">
+      <DataType>varchar(30)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="306" parent="287" name="count">
+      <DataType>int|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="307" parent="287" name="size">
+      <DataType>int|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="308" parent="287" name="good_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="309" parent="287" name="preview">
+      <DataType>tinyint(1)|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="310" parent="287" name="images_ibfk_1">
+      <ColNames>good_id</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>id</RefColNames>
+      <RefTableName>goods</RefTableName>
+    </foreign-key>
+    <index id="311" parent="287" name="good_id">
+      <ColNames>good_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="312" parent="287" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="313" parent="288" name="id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="314" parent="288" name="name">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="315" parent="288" name="text">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="316" parent="288" name="goods_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="317" parent="288" name="date">
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>5</Position>
+    </column>
+    <column id="318" parent="288" name="parent_id">
+      <DataType>int|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="319" parent="288" name="reviews_ibfk_1">
+      <ColNames>goods_id</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>id</RefColNames>
+      <RefTableName>goods</RefTableName>
+    </foreign-key>
+    <index id="320" parent="288" name="id">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="321" parent="288" name="reviews_ibfk_1">
+      <ColNames>goods_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="322" parent="288" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <key id="323" parent="288" name="id">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

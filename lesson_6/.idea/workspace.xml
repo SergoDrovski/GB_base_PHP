@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5203c6f-d308-4b13-b74c-b34690044cd6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/dataSources/da78919d-d9bb-4984-81d2-a2726994b467.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/dataSources/da78919d-d9bb-4984-81d2-a2726994b467/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/08b80ecc-7e78-4f11-a900-e7f05255f802.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/08b80ecc-7e78-4f11-a900-e7f05255f802.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mysql.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mysql.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layouts/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/views/main.phtml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/views/product.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/views/product.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testDB_localhost-2021_12_06_23_25_47-dump.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +54,9 @@
       <option name="presentableId" value="Default" />
       <updated>1638891428388</updated>
       <workItem from="1638891429436" duration="90000" />
-      <workItem from="1638891581924" duration="5603000" />
+      <workItem from="1638891581924" duration="6225000" />
+      <workItem from="1638956098093" duration="1692000" />
+      <workItem from="1638967596542" duration="23358000" />
     </task>
     <servers />
   </component>

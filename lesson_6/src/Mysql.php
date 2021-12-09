@@ -5,6 +5,7 @@ namespace Src;
 class Mysql
 {
     public $connect;
+    public $result;
     private int $password = 12345678;
     private string $username = 'root';
     private string $nameDB = 'testDB';
@@ -29,25 +30,24 @@ class Mysql
             $stmt -> bind_param($data[0], ...$data[1]);
         }
         $stmt->execute();
+
         if (in_array($method, ['UPDATE','DELETE','INSERT'])) {
-            $result = $stmt->affected_rows;
+            $this->result[] = $stmt->affected_rows;
         } else {
-            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            $resp = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            $this->result = array_filter(array_map('array_filter', $resp));
+            return (bool)count($this->result);
         }
-        if (!$result) {
-            header("HTTP/1.0 500 Internal Server Error");
-            die("Mysql error: " . $this->connect->error);
-        }
-        $stmt -> close();
-        return $result;
+        return (bool)count($this->result);
     }
 
-    public function first($sql)
-    {
-        $query = $this->query($sql);
-        if (!$query) {
-            return [];
-        }
-        return $query[0];
-    }
+//    public function first($sql)
+//    {
+//        $query = $this->query($sql);
+//        if (!$query) {
+//            return [];
+//        }
+//        return $query[0];
+//    }
+
 }
