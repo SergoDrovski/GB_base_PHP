@@ -608,7 +608,7 @@ progress {
 }
 
 .img-fluid {
-  max-width: 100%;
+  max-width: 200px;
   height: auto;
 }
 
@@ -13972,8 +13972,8 @@ Components - Products
 
 .product-default-img {
   display: block;
-  min-height: 273px;
-  width: 100%;
+  /*min-height: 273px;*/
+  /*width: 100%;*/
   object-fit: cover;
 }
 
@@ -13999,7 +13999,10 @@ Components - Products
 }
 
 .product-img-warp {
+  display: flex;
+  align-items: center;
   position: relative;
+  min-height: 200px;
 }
 
 .product-action-icon-link {
@@ -18045,4 +18048,12 @@ Layout - Footer
   background-image: url(../../assets/images/icon/top-arrow.svg);
   background-position: center 50%;
   background-repeat: no-repeat;
+}
+
+.product-default-img-link {
+  height: fit-content;
+}
+
+.product-grade {
+  width: 20%;
 }

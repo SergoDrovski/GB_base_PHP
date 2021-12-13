@@ -23,8 +23,18 @@ class ProductController
             die();
         }
         $id = (int) $request->get('id');
-        $sql = "SELECT goods.id , title_good, description, quantity, price, group_concat(title_img) as title_img
-FROM goods INNER JOIN images ON goods.id = images.good_id where goods.id ={$id}";
+        $sql = "SELECT goods.id,
+               title_good,
+               description,
+               quantity,
+               price,
+               group_concat(title_img) as title_img,
+               round(avg(rating))      as rating
+        FROM goods
+                 INNER JOIN images ON goods.id = images.good_id
+                 left join reviews r on goods.id = r.goods_id
+        where goods.id ={$id}";
+
         $connect = new Mysqli();
         $query = $connect->query($sql, 'SELECT');
         if (!$query) {
@@ -45,16 +55,14 @@ FROM goods INNER JOIN reviews r on goods.id = r.goods_id where goods.id ={$id}";
     {
         $name = htmlspecialchars($request->get('name'));
         $text = htmlspecialchars($request->get('text'));
+        $rating = (int) $request->get('rating');
         $goods_id = (int) $request->get('goods_id');
-        $sql = 'INSERT INTO reviews (name, text, goods_id) VALUES (?, ?, ?)';
-        $data = ['ssi', [$name,$text,$goods_id]];
+        $sql = 'INSERT INTO reviews (name, text, goods_id, rating) VALUES (?, ?, ?, ?)';
+        $data = ['ssii', [$name,$text,$goods_id,$rating]];
 
         $connect = new Mysqli();
         $query = $connect->query($sql, 'INSERT', $data);
 
-        echo "<pre>";
-        var_dump($query);
-        exit();
+        header( "location: /product/?id={$goods_id}");
     }
-
 }

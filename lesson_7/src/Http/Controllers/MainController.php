@@ -11,7 +11,8 @@ class MainController
 
     public function index(Request $request)
     {
-        View::view('main');
+        header("location: /shop");
+//        View::view('main');
     }
 
 }

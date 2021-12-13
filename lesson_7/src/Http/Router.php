@@ -14,7 +14,7 @@ class Router
     private static $routes = [
         '/' => [MainController::class, 'index', 'GET'],
         '/shop' => [ShopController::class, 'index', 'GET'],
-        '/product' => [ProductController::class, 'index', 'GET'],
+        '/product/' => [ProductController::class, 'index', 'GET'],
         '/product/rev' => [ProductController::class, 'saveReviews', 'POST'],
 //        '/product' => [ProductController::class, 'index', 'GET', ['auth' => 'beget']],
 //        '/beget/change' => [ShopController::class, 'changeDomens', 'POST', ['auth' => 'beget']],

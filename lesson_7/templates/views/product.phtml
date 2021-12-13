@@ -30,14 +30,14 @@
                         <?php $collect = explode(',', $product['title_img']); ?>
                         <?php foreach ($collect as $img): ?>
                             <div class="product-image-large-single zoom-image-hover">
-                                <img src="assets/images/products_images/big/<?php echo $img ?>" alt="Product Image">
+                                <img src="/assets/images/products_images/big/<?php echo $img ?>" alt="Product Image">
                             </div>
                         <?php endforeach ?>
                     </div>
                     <div class="product-image-thumb product-image-thumb-horizontal pos-relative">
                         <?php foreach ($collect as $img): ?>
                             <div class="product-image-thumb-single">
-                                <img class="img-fluid" src="assets/images/products_images/big/<?php echo $img ?>" alt="Product Image">
+                                <img class="img-fluid" src="/assets/images/products_images/big/<?php echo $img ?>" alt="Product Image">
                             </div>
                         <?php endforeach ?>
                     </div>
@@ -51,12 +51,12 @@
                         <div class="d-flex align-items-center">
                             <div class="product-review">
                                 <span class="review-fill"><i class="fa fa-star"></i></span>
-                                <span class="review-fill"><i class="fa fa-star"></i></span>
-                                <span class="review-fill"><i class="fa fa-star"></i></span>
-                                <span class="review-fill"><i class="fa fa-star"></i></span>
+                                <span class="review-empty"><i class="fa fa-star"></i></span>
+                                <span class="review-empty"><i class="fa fa-star"></i></span>
+                                <span class="review-empty"><i class="fa fa-star"></i></span>
                                 <span class="review-empty"><i class="fa fa-star"></i></span>
                             </div>
-                            <a href="" class="customer-review">(customer review )</a>
+                            <a href="" class="customer-review">(оценка покупателей)</a>
                         </div>
                         <div class="price"><del><?php echo $product['price'] ?> руб.</del><?php echo $product['price'] ?> руб.</div>
                         <p><?php echo $product['description'] ?></p>
@@ -104,7 +104,7 @@
                             </div>
 
                             <div class="product-add-to-cart-btn">
-                                <a href="#" data-toggle="modal" data-target="#modalAddcart">Add To Cart</a>
+                                <a href="#" data-toggle="modal" data-target="#modalAddcart">В корзину</a>
                             </div>
                         </div>
 
@@ -203,7 +203,7 @@
                                         <li class="comment-list">
                                             <div class="comment-wrapper">
                                                 <div class="comment-img">
-                                                    <img src="assets/images/user/image-1.png" alt="">
+                                                    <img src="/assets/images/user/avatar-svgrepo-com.svg" alt="">
                                                 </div>
                                                 <div class="comment-content">
                                                     <div class="comment-content-top">
@@ -212,9 +212,9 @@
                                                             <span class="date"><?php echo $rev['date']; ?></span>
                                                             <div class="product-review">
                                                                 <span class="review-fill"><i class="fa fa-star"></i></span>
-                                                                <span class="review-fill"><i class="fa fa-star"></i></span>
-                                                                <span class="review-fill"><i class="fa fa-star"></i></span>
-                                                                <span class="review-fill"><i class="fa fa-star"></i></span>
+                                                                <span class="review-empty"><i class="fa fa-star"></i></span>
+                                                                <span class="review-empty"><i class="fa fa-star"></i></span>
+                                                                <span class="review-empty"><i class="fa fa-star"></i></span>
                                                                 <span class="review-empty"><i class="fa fa-star"></i></span>
                                                             </div>
                                                         </div>
@@ -224,7 +224,7 @@
                                                     </div>
 
                                                     <div class="para-content">
-                                                        <p><<?php echo $rev['text']; ?>/p>
+                                                        <p><?php echo $rev['text']; ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -233,22 +233,29 @@
                                     </ul>
                                     <div class="review-form">
                                         <div class="review-form-text-top">
-                                            <h5>ADD A REVIEW</h5>
-                                            <p>Your email address will not be published. Required fields are marked *</p>
+                                            <h5>ДОБАВИТЬ ОТЗЫВ</h5>
                                         </div>
 
                                         <form action="/product/rev" method="post">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="default-form-box mb-20">
-                                                        <label for="comment-name">Your name <span>*</span></label>
-                                                        <input id="comment-name" type="text" placeholder="Enter your name" required>
+                                                        <label for="comment-name">Ваше имя <span>*</span></label>
+                                                        <input id="comment-name" type="text" name="name" placeholder="Введите Ваше имя" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="default-form-box mb-20">
+                                                        <label for="comment-name">Ваша оценка <span>*</span></label>
+                                                        <div class="product-grade">
+                                                            <input id="product-grade" name="rating" min="1" max="5" value="5" type="number">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="default-form-box mb-20">
-                                                        <label for="comment-review-text">Your review <span>*</span></label>
-                                                        <textarea id="comment-review-text" placeholder="Write a review" required></textarea>
+                                                        <label for="comment-review-text">Ваш отзыв <span>*</span></label>
+                                                        <textarea id="comment-review-text" name="text" placeholder="Введите Ваш отзыв" required></textarea>
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="goods_id" class="input-field" value="<?php echo $product['id']; ?>">
