@@ -49,8 +49,8 @@
                     <div class="product-details-text">
                         <h4 class="title"><?php echo $product['title_good'] ?></h4>
                         <div class="d-flex align-items-center">
-                            <div class="product-review">
-                                <span class="review-fill"><i class="fa fa-star"></i></span>
+                            <div class="product-review" data-rating="<?php echo $product['rating'] ?>">
+                                <span class="review-empty"><i class="fa fa-star"></i></span>
                                 <span class="review-empty"><i class="fa fa-star"></i></span>
                                 <span class="review-empty"><i class="fa fa-star"></i></span>
                                 <span class="review-empty"><i class="fa fa-star"></i></span>
@@ -58,6 +58,7 @@
                             </div>
                             <a href="" class="customer-review">(оценка покупателей)</a>
                         </div>
+
                         <div class="price"><del><?php echo $product['price'] ?> руб.</del><?php echo $product['price'] ?> руб.</div>
                         <p><?php echo $product['description'] ?></p>
                     </div> <!-- End  Product Details Text Area-->
@@ -210,7 +211,7 @@
                                                         <div class="comment-content-left">
                                                             <h6 class="comment-name"><?php echo $rev['name']; ?></h6>
                                                             <span class="date"><?php echo $rev['date']; ?></span>
-                                                            <div class="product-review">
+                                                            <div class="product-review" data-rating="<?php echo $rev['rating'] ?>">
                                                                 <span class="review-fill"><i class="fa fa-star"></i></span>
                                                                 <span class="review-empty"><i class="fa fa-star"></i></span>
                                                                 <span class="review-empty"><i class="fa fa-star"></i></span>
@@ -231,6 +232,7 @@
                                         </li>
                                         <?php endforeach ?>
                                     </ul>
+
                                     <div class="review-form">
                                         <div class="review-form-text-top">
                                             <h5>ДОБАВИТЬ ОТЗЫВ</h5>
@@ -275,3 +277,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    const elemStar = document.querySelectorAll(`.product-review`);
+    for (let i = 0; i < elemStar.length; i++) {
+
+    }
+
+        const rating = elemStar.dataset.rating;
+        const collect = elemStar.querySelectorAll('.review-empty');
+        // for (let i = 0; i < rating; i++) {
+        //     collect[i].classList.remove('review-empty');
+        //     collect[i].classList.add('review-fill');
+        // }
+</script>

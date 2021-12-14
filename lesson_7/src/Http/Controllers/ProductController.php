@@ -28,11 +28,9 @@ class ProductController
                description,
                quantity,
                price,
-               group_concat(title_img) as title_img,
-               round(avg(rating))      as rating
+               group_concat(title_img) as title_img
         FROM goods
                  INNER JOIN images ON goods.id = images.good_id
-                 left join reviews r on goods.id = r.goods_id
         where goods.id ={$id}";
 
         $connect = new Mysqli();
@@ -43,7 +41,13 @@ class ProductController
         }
         $param['product'] = $connect->result[0];
 
-        $sql = "SELECT r.id,name,text,date,parent_id
+        $sql = "SELECT round(avg(rating)) as rating
+        FROM goods left join reviews r on goods.id = r.goods_id
+        where goods.id = {$id}";
+        $query = $connect->query($sql, 'SELECT');
+        $param['product']['rating'] = $connect->result[0]['rating'];
+
+        $sql = "SELECT r.id,name,text,date,parent_id,rating
 FROM goods INNER JOIN reviews r on goods.id = r.goods_id where goods.id ={$id}";
         $query = $connect->query($sql, 'SELECT');
         $param['reviews'] = $connect->result;
