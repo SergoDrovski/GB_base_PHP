@@ -1,0 +1,121 @@
+
+    <!-- ...:::: Start Breadcrumb Section:::... -->
+    <div class="breadcrumb-section">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-between justify-content-md-between  align-items-center flex-md-row flex-column">
+                        <h3 class="breadcrumb-title">Корзина</h3>
+                        <div class="breadcrumb-nav">
+                            <nav aria-label="breadcrumb">
+                                <ul>
+                                    <li><a href="/">Главная</a></li>
+                                    <li><a href="/shop">Магазин</a></li>
+                                    <li class="active" aria-current="page">Корзина</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ...:::: End Breadcrumb Section:::... -->
+
+  <?php if (!empty($basket)): ?>
+    <!-- ...:::: Start Cart Section:::... -->
+    <div class="cart-section">
+        <!-- Start Cart Table -->
+        <div class="cart-table-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="table_page table-responsive">
+                                <table>
+                                    <!-- Start Cart Table Head -->
+                                    <thead>
+                                        <tr>
+                                            <th class="product_remove">Удалить</th>
+                                            <th class="product_thumb">Изображение</th>
+                                            <th class="product_name">Название</th>
+                                            <th class="product-price">Цена</th>
+                                            <th class="product_quantity">Всего</th>
+                                            <th class="product_total">Итого</th>
+                                        </tr>
+                                    </thead> <!-- End Cart Table Head -->
+                                    <tbody>
+                                        <!-- Start Cart Single Item-->
+                                        <tr>
+                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                            <td class="product_thumb"><a href="/product/?id=<?php echo $id; ?>"><img src="/assets/images/products_images/small/<?php echo $img; ?>" alt="img"></a></td>
+                                            <td class="product_name"><a href="/product/?id=<?php echo $id; ?>"><?php echo $name; ?></a></td>
+                                            <td class="product-price"><?php echo $price; ?></td>
+                                            <td class="product_quantity"><input min="1" max="100" value="1" type="number"><label>/шт.</label></td>
+                                            <td class="product_total">$130.00</td>
+                                        </tr> <!-- End Cart Single Item-->
+                                        <!-- Start Cart Single Item-->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cart_submit">
+                                <button type="submit">Обновить корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Cart Table -->
+
+        <!-- Start Coupon Start -->
+        <div class="coupon_area">
+            <div class="container">
+                <div class="row">
+                    <!--<div class="col-lg-6 col-md-6">
+                        <div class="coupon_code left">
+                            <h3>Coupon</h3>
+                            <div class="coupon_inner">
+                                <p>Enter your coupon code if you have one.</p>
+                                <input placeholder="Coupon code" type="text">
+                                <button type="submit">Apply coupon</button>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="col-lg-8 col-md-6">
+                        <div class="coupon_code right">
+                            <h3>Итого</h3>
+                            <div class="coupon_inner">
+                                <div class="cart_subtotal">
+                                    <p>Цена</p>
+                                    <p class="cart_amount">$215.00</p>
+                                </div>
+                                <div class="cart_subtotal ">
+                                    <p>Стоимость доставки</p>
+                                    <p class="cart_amount"><span>стандартная ставка:</span> 500 руб.</p>
+                                </div>
+                                <!--<a href="#">Calculate shipping</a>-->
+
+                                <div class="cart_subtotal">
+                                    <p>Всего к оплате</p>
+                                    <p class="cart_amount">$215.00</p>
+                                </div>
+                                <div class="checkout_btn">
+                                    <a href="#">Перейти к оформлению</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Coupon Start -->
+
+    </div>
+    <!-- ...:::: End Cart Section:::... -->
+  <?php else: ?>
+      <div class="container" data-widget="emptyCart">
+          <h4 class="title">Корзина пуста</h4>
+          <p>Воспользуйтесь поиском, чтобы найти всё что нужно.</p>
+          <br>
+      </div>
+  <?php endif ?>

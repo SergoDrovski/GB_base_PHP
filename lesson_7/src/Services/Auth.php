@@ -26,7 +26,6 @@ class Auth
 
     public function saveSession($api, $param)
     {
-        if ($api === 'beget') {
             $_SESSION['user'] = [
                 'beget' => [
                     'log' => $param['name'],
@@ -34,7 +33,7 @@ class Auth
                     'date' => time()
                 ]
             ];
-        }
+
     }
 
     static function updateDate($api)
@@ -46,9 +45,9 @@ class Auth
 //    {
 //        $_SESSION['user'] = array();
 //    }
+
+
 }
-
-
 //$_SESSION['user'] = [
 //    'isp' => [
 //        'auth' => 12333,

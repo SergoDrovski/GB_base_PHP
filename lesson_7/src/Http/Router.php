@@ -3,6 +3,8 @@
 namespace Src\Http;
 
 
+use Src\Http\Controllers\BasketController;
+use Src\Http\Controllers\UserCabinetController;
 use Src\Services\Auth;
 use Src\Http\Controllers\AuthBegetController;
 use Src\Http\Controllers\ProductController;
@@ -12,12 +14,13 @@ use Src\Http\Controllers\ShopController;
 class Router
 {
     private static $routes = [
-        '/' => [MainController::class, 'index', 'GET'],
-        '/shop' => [ShopController::class, 'index', 'GET'],
-        '/product/' => [ProductController::class, 'index', 'GET'],
-        '/product/rev' => [ProductController::class, 'saveReviews', 'POST'],
-//        '/product' => [ProductController::class, 'index', 'GET', ['auth' => 'beget']],
-//        '/beget/change' => [ShopController::class, 'changeDomens', 'POST', ['auth' => 'beget']],
+        '/' => [MainController::class, 'index', 'GET', ['indefinite', 'user']],
+        '/shop' => [ShopController::class, 'index', 'GET', ['indefinite', 'user']],
+        '/product/' => [ProductController::class, 'index', 'GET', ['indefinite', 'user']],
+        '/product/rev' => [ProductController::class, 'saveReviews', 'POST', ['user']],
+        '/cabinet/' => [UserCabinetController::class, 'index', 'GET', ['user']],
+        '/basket/index' => [BasketController::class, 'index', 'GET', ['indefinite', 'user']],
+        '/basket/add/' => [BasketController::class, 'add', 'POST', ['indefinite', 'user']],
     ];
 
     static function init()
@@ -39,7 +42,7 @@ class Router
                     $class = new $controller[0];
                     $method = $controller[1];
                     $request_data = [];
-                    $access = true;
+                    $access = false;
                     if ($request_method == 'POST') {
                         if ($_SERVER['CONTENT_TYPE'] && $_SERVER['CONTENT_TYPE'] == 'application/json;charset=UTF-8') {
                             $request_data = json_decode(file_get_contents('php://input'), true);
@@ -56,10 +59,12 @@ class Router
                     if ($request_method == 'PUT') {
                         $request_data = $_POST;
                     }
-//                    if (!empty($controller[3])) {
-//                        if (!Auth::check($controller[3])) {
-//                            $access = false;
-//                        }
+//                    $user = Auth::check();
+//                    if (in_array($user, $controller[3])) {
+//                        $access = true;
+////                        if (!Auth::check($controller[3])) {
+////                            $access = false;
+////                        }
 //                    }
 
                     return $class->$method(new Request($request_data, $_FILES), $access);

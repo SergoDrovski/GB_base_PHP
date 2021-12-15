@@ -43,4 +43,9 @@ class Request
     {
 
     }
+
+    public function cookie()
+    {
+
+    }
 }

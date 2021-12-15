@@ -14890,6 +14890,7 @@ table {
 .table_page table tbody tr td.product_quantity label {
   font-weight: 600;
   margin-right: 5px;
+  margin-left: 10px;
 }
 .table_page table tbody tr td.product_quantity input {
   width: 60px;
@@ -15430,7 +15431,7 @@ Pages - Cart
 }
 .cart_subtotal p {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
 }
 .cart_subtotal p span {
   margin-right: 30px;
