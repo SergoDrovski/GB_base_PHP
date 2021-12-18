@@ -2,10 +2,13 @@
 
 namespace Src\Http;
 
+use Src\Http\Cookie;
+
 class Request
 {
     private mixed $data;
     private mixed $files_data;
+
 
 
     public function __construct($data = [], $files = [])
@@ -44,8 +47,15 @@ class Request
 
     }
 
-    public function cookie()
+    public function cookie(
+        $name,
+        $value = null,
+        $path = '/',
+        $domain = null,
+        $secure = false
+    ): \Src\Http\Cookie
     {
-
+        return new Cookie($name, $value, $path, $domain, $secure);
     }
 }
+

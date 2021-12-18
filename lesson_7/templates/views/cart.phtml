@@ -46,14 +46,17 @@
                                     </thead> <!-- End Cart Table Head -->
                                     <tbody>
                                         <!-- Start Cart Single Item-->
+                                        <?php foreach ($basket as $product): ?>
                                         <tr>
                                             <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                            <td class="product_thumb"><a href="/product/?id=<?php echo $id; ?>"><img src="/assets/images/products_images/small/<?php echo $img; ?>" alt="img"></a></td>
-                                            <td class="product_name"><a href="/product/?id=<?php echo $id; ?>"><?php echo $name; ?></a></td>
-                                            <td class="product-price"><?php echo $price; ?></td>
-                                            <td class="product_quantity"><input min="1" max="100" value="1" type="number"><label>/шт.</label></td>
+                                            <td class="product_thumb"><a href="/product/?id=<?php echo $product['id']; ?>"><img src="/assets/images/products_images/small/<?php echo $product['title_img']; ?>" alt="img"></a></td>
+                                            <td class="product_name"><a href="/product/?id=<?php echo $product['id']; ?>"><?php echo $product['title_good']; ?></a></td>
+                                            <td class="product-price"><?php echo $product['price']; ?> руб.</td>
+                                            <td class="product_quantity"><input min="1" max="100" value="<?php echo $product['quantity']; ?>" type="number"><label>/шт.</label></td>
                                             <td class="product_total">$130.00</td>
-                                        </tr> <!-- End Cart Single Item-->
+                                        </tr>
+                                        <?php endforeach ?>
+                                        <!-- End Cart Single Item-->
                                         <!-- Start Cart Single Item-->
 
                                     </tbody>

@@ -2,6 +2,8 @@
 
 namespace Src\Http\Controllers;
 
+use Src\Http\Cookie;
+use Src\Http\CookieNew;
 use Src\Http\Mysqli;
 use Src\Http\Request;
 use Src\Http\View;
@@ -14,15 +16,34 @@ class BasketController
 
     public function index(Request $request)
     {
-        $basket_id = $request->cookie('basket_id');
-        if (empty($basket_id)) {
+        $cooks = $request->cookie("basket_id");
+
+        if (empty($cooks->get())) {
             $param = null;
             View::view('cart');
         }
 
-
-//        View::view('cart');
+        $basket_id = (int) $cooks->get();
+        $connect = new Mysqli();
+        $sql = " SELECT
+        goods.id,
+        title_img,
+        title_good,
+        description,
+        basket_goods.quantity,
+        price
+ FROM basket_goods
+          INNER JOIN goods ON goods.id = product_id
+          INNER JOIN images ON goods.id = good_id
+ where basket_id = {$basket_id}";
+        $connect->query($sql, 'SELECT');
+        $param['basket'] = $connect->result;
+        View::view('cart', $param);
     }
+
+    //        echo "<pre>";
+//        var_dump($param);
+//        exit();
 
     public function add(Request $request, $id) {
         $basket_id = $request->cookie('basket_id');
@@ -62,12 +83,3 @@ class BasketController
 # SET quantity = 6
 # where basket_id = 1 and product_id = 1
 
-# SELECT title_img,
-#        title_good,
-#        description,
-#        basket_goods.quantity,
-#        price
-# FROM basket_goods
-#          INNER JOIN goods ON goods.id = product_id
-#          INNER JOIN images ON goods.id = good_id
-# where basket_id = 1
