@@ -98,14 +98,18 @@
                         <!-- Product Variable Single Item -->
                         <div class="d-flex align-items-center">
                             <div class="variable-single-item ">
-                                <span>Quantity</span>
+                                <span>Количество</span>
                                 <div class="product-variable-quantity">
-                                    <input min="1" max="100" value="1" type="number">
+                                    <form class="cart_quantity">
+                                        <input min="1" max="100" value="1" name="quantity" type="number">
+                                        <input type="hidden" value="<?php echo $product['id'] ?>" name="id" >
+                                    </form>
+<!--                                    <button id="cart_send">отправить</button>-->
                                 </div>
                             </div>
 
                             <div class="product-add-to-cart-btn">
-                                <a href="#" data-toggle="modal" data-target="#modalAddcart">В корзину</a>
+                                <a id="cart_send" data-toggle="modal" data-target="#modalAddcart">В корзину</a>
                             </div>
                         </div>
 

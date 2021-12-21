@@ -32,7 +32,7 @@ class Mysqli
         $stmt->execute();
 
         if (in_array($method, ['UPDATE','DELETE','INSERT'])) {
-            $this->result[] = $stmt->affected_rows;
+            $this->result[] = $stmt->insert_id;
         } else {
             $resp = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             $this->result = array_filter(array_map('array_filter', $resp));

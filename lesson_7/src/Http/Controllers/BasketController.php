@@ -16,11 +16,26 @@ class BasketController
 
     public function index(Request $request)
     {
+        $connect = new Mysqli();
+        $sql = "SELECT title_img,
+       title_good,
+       description,
+       basket_goods.quantity,
+       price
+FROM basket_goods
+         INNER JOIN goods ON goods.id = product_id
+         INNER JOIN images ON goods.id = good_id
+where basket_id = 1";
+        $connect->query($sql, 'SELECT');
+
+        $count = count($connect->result);
+
+
         $cooks = $request->cookie("basket_id");
 
         if (empty($cooks->get())) {
-            $param = null;
-            View::view('cart');
+            $param['basket'] = [];
+            View::view('cart', $param);
         }
 
         $basket_id = (int) $cooks->get();
@@ -45,31 +60,76 @@ class BasketController
 //        var_dump($param);
 //        exit();
 
-    public function add(Request $request, $id) {
-        $basket_id = $request->cookie('basket_id');
-        $quantity = $request->input('quantity') ?? 1;
-        if (empty($basket_id)) {
-            // если корзина еще не существует — создаем объект
-            $basket = Basket::create();
+    public function add(Request $request) {
+        $connect = new Mysqli();
+        $cooks = $request->cookie('basket_id');
+        $product_id = (int) $request->get('id');
+        $quantity = (int) $request->get('quantity') ?? 1;
+        if (empty($cooks->get())) {
+            // если корзина еще не существует — создаем
+            $sql = "INSERT INTO basket () VALUES ()";
+            $connect->query($sql, 'INSERT');
             // получаем идентификатор, чтобы записать в cookie
-            $basket_id = $basket->id;
+            $basket_id = $connect->result[0];
         } else {
             // корзина уже существует, получаем объект корзины
-            $basket = Basket::findOrFail($basket_id);
-            // обновляем поле `updated_at` таблицы `baskets`
-            $basket->touch();
+            $basket_id = (int) $cooks->get();
         }
-        if ($basket->products->contains($id)) {
+        $sql = "SELECT
+                    id,
+                    product_id,
+                    quantity
+                 FROM basket_goods
+                 where product_id = {$product_id} and basket_id = {$basket_id}";
+        $connect->query($sql, 'SELECT');
+        $prodInBasket = $connect->result;
+        $result = false;
+
+        if (count($prodInBasket)) {
             // если такой товар есть в корзине — изменяем кол-во
-            $pivotRow = $basket->products()->where('product_id', $id)->first()->pivot;
-            $quantity = $pivotRow->quantity + $quantity;
-            $pivotRow->update(['quantity' => $quantity]);
+            $newQuantity = $prodInBasket[0]['quantity'] + $quantity;
+            $sql = "UPDATE
+                         basket_goods
+                    SET quantity = {$newQuantity}
+                    where basket_id = {$basket_id} and product_id = {$product_id}";
+            // если всё ок, записываем id корзины в куку
+            if ($connect->query($sql, 'UPDATE')) {
+                $cooks->setValue("{$basket_id}");
+                $cooks->create();
+                $result = true;
+            }
         } else {
             // если такого товара нет в корзине — добавляем его
-            $basket->products()->attach($id, ['quantity' => $quantity]);
+            $sql = "INSERT INTO basket_goods (basket_id, product_id, quantity) VALUES (?, ?, ?)";
+            $data = ['iii', [$basket_id,$product_id,$quantity]];
+            if ($connect->query($sql, 'INSERT', $data)) {
+                $cooks->setValue("{$basket_id}");
+                $cooks->create();
+                $result = true;
+            }
         }
-        // выполняем редирект обратно на страницу, где была нажата кнопка «В корзину»
-        return back()->withCookie(cookie('basket_id', $basket_id, 525600));
+        if (!$result) {
+            echo false;
+            die();
+        }
+        $sql = "SELECT 
+       goods.id,
+       title_img,
+       title_good,
+       description,
+       basket_goods.quantity,
+       price
+FROM basket_goods
+         INNER JOIN goods ON goods.id = product_id
+         INNER JOIN images ON goods.id = good_id
+where basket_id = {$basket_id}";
+        $connect->query($sql, 'SELECT');
+        // отправляем актуальные данные корзины на фронт
+        echo json_encode($connect->result);
+    }
+
+    public function change (Request $request)
+    {
     }
 }
 

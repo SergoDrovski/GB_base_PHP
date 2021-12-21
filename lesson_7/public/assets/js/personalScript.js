@@ -1,18 +1,4 @@
 
-
-
-// Рейтинг оценок
-
-const elemRatingAll = document.querySelectorAll(`.product-review`);
-for (let i = 0; i < elemRatingAll.length; i++) {
-    let rating = elemRatingAll[i].dataset.rating;
-    let collect = elemRatingAll[i].querySelectorAll('.review-empty');
-    for (let i = 0; i < rating; i++) {
-        collect[i].classList.remove('review-empty');
-        collect[i].classList.add('review-fill');
-    }
-}
-
 // Расчёт корзины
 //Боковая
 const Basket = document.querySelectorAll(`.offcanvas-cart-item-details`);
@@ -24,6 +10,17 @@ for (let i = 0; i < Basket.length; i++) {
     totalSum += elemSum;
 }
 document.querySelector('.offcanvas-cart-total-price-value').innerHTML = totalSum + ' руб.';
+
+// Рейтинг оценок
+const elemRatingAll = document.querySelectorAll(`.product-review`);
+for (let i = 0; i < elemRatingAll.length; i++) {
+    let rating = elemRatingAll[i].dataset.rating;
+    let collect = elemRatingAll[i].querySelectorAll('.review-empty');
+    for (let i = 0; i < rating; i++) {
+        collect[i].classList.remove('review-empty');
+        collect[i].classList.add('review-fill');
+    }
+}
 
 //на основной странице
 document.querySelector('.basket_price').innerHTML = totalSum + ' руб.';

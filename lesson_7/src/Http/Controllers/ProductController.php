@@ -14,12 +14,29 @@ class ProductController
 
     public function index(Request $request, $access)
     {
-//        if ($access != true) {
-//            header("location: /beget/login" );
-//        }
+        $cooks = $request->cookie("basket_id");
+        $connect = new Mysqli();
+        if (empty($cooks->get())) {
+            $param['basket'] = [];
+        } else {
+            $basket_id = (int) $cooks->get();
+            $sql = " SELECT
+        goods.id,
+        title_img,
+        title_good,
+        description,
+        basket_goods.quantity,
+        price
+ FROM basket_goods
+          INNER JOIN goods ON goods.id = product_id
+          INNER JOIN images ON goods.id = good_id
+ where basket_id = {$basket_id}";
+            $connect->query($sql, 'SELECT');
+            $param['basket'] = $connect->result;
+        }
 
         if (empty($request->get('id'))) {
-            View::view('404');
+            View::view('404', $param);
             die();
         }
         $id = (int) $request->get('id');
@@ -33,10 +50,9 @@ class ProductController
                  INNER JOIN images ON goods.id = images.good_id
         where goods.id ={$id}";
 
-        $connect = new Mysqli();
         $query = $connect->query($sql, 'SELECT');
         if (!$query) {
-            View::view('404');
+            View::view('404', $param);
             die();
         }
         $param['product'] = $connect->result[0];
@@ -54,6 +70,7 @@ FROM goods INNER JOIN reviews r on goods.id = r.goods_id where goods.id ={$id}";
 
         View::view('product', $param);
     }
+
 
     public function saveReviews(Request $request, $access)
     {

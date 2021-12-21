@@ -18058,3 +18058,8 @@ Layout - Footer
 .product-grade {
   width: 20%;
 }
+
+.product-add-to-cart-btn #cart_send {
+  color: #fff;
+  cursor: pointer;
+}
