@@ -30,7 +30,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="table_desc">
+                        <div class="table_desc" id="basket_desc">
                             <div class="table_page table-responsive">
                                 <table>
                                     <!-- Start Cart Table Head -->
@@ -44,11 +44,12 @@
                                             <th class="product_total">Итого</th>
                                         </tr>
                                     </thead> <!-- End Cart Table Head -->
-                                    <tbody>
+                                    <tbody class="basket_product_list">
+                                        <form action="">
                                         <!-- Start Cart Single Item-->
                                         <?php foreach ($basket as $product): ?>
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                        <tr class="basket_row_product">
+                                            <td class="product_remove"><a class="product_delete" data-id="<?php echo $product['id']; ?>"><i class="fa fa-trash-o"></i></a></td>
                                             <td class="product_thumb"><a href="/product/?id=<?php echo $product['id']; ?>"><img src="/assets/images/products_images/small/<?php echo $product['title_img']; ?>" alt="img"></a></td>
                                             <td class="product_name"><a href="/product/?id=<?php echo $product['id']; ?>"><?php echo $product['title_good']; ?></a></td>
                                             <td class="product-price" data-price="<?php echo $product['price']; ?>"><?php echo $product['price']; ?> руб.</td>
@@ -58,12 +59,12 @@
                                         <?php endforeach ?>
                                         <!-- End Cart Single Item-->
                                         <!-- Start Cart Single Item-->
-
+                                        </form>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="cart_submit">
-                                <button type="submit">Обновить корзину</button>
+                                <button type="submit" class="cart_submit_change">Обновить корзину</button>
                             </div>
                         </div>
                     </div>
@@ -117,10 +118,10 @@
     </div>
     <!-- ...:::: End Cart Section:::... -->
   <?php else: ?>
-      <div class="container" data-widget="emptyCart">
+    <div class="container" data-widget="emptyCart">
           <h4 class="title">Корзина пуста</h4>
           <p>Воспользуйтесь поиском, чтобы найти всё что нужно.</p>
           <br>
-      </div>
+    </div>
   <?php endif ?>
 

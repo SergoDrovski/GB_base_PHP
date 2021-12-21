@@ -358,4 +358,8 @@
 	content: "\e953"
 }
 
+.icon-home:before {
+	content: "\e91b";
+}
+
 /*=====  End of Plaza Icon  ======*/

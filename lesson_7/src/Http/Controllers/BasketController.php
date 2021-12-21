@@ -18,14 +18,14 @@ class BasketController
     {
         $connect = new Mysqli();
         $sql = "SELECT title_img,
-       title_good,
-       description,
-       basket_goods.quantity,
-       price
-FROM basket_goods
-         INNER JOIN goods ON goods.id = product_id
-         INNER JOIN images ON goods.id = good_id
-where basket_id = 1";
+                   title_good,
+                   description,
+                   basket_goods.quantity,
+                   price
+                FROM basket_goods
+                     INNER JOIN goods ON goods.id = product_id
+                     INNER JOIN images ON goods.id = good_id
+                where basket_id = 1";
         $connect->query($sql, 'SELECT');
 
         $count = count($connect->result);
@@ -41,24 +41,22 @@ where basket_id = 1";
         $basket_id = (int) $cooks->get();
         $connect = new Mysqli();
         $sql = " SELECT
-        goods.id,
-        title_img,
-        title_good,
-        description,
-        basket_goods.quantity,
-        price
- FROM basket_goods
-          INNER JOIN goods ON goods.id = product_id
-          INNER JOIN images ON goods.id = good_id
- where basket_id = {$basket_id}";
+                    goods.id,
+                    title_img,
+                    title_good,
+                    description,
+                    basket_goods.quantity,
+                    price
+                FROM basket_goods
+                      INNER JOIN goods ON goods.id = product_id
+                      INNER JOIN images ON goods.id = good_id
+                where basket_id = {$basket_id}";
         $connect->query($sql, 'SELECT');
         $param['basket'] = $connect->result;
         View::view('cart', $param);
     }
 
-    //        echo "<pre>";
-//        var_dump($param);
-//        exit();
+
 
     public function add(Request $request) {
         $connect = new Mysqli();
@@ -113,19 +111,63 @@ where basket_id = 1";
             die();
         }
         $sql = "SELECT 
-       goods.id,
-       title_img,
-       title_good,
-       description,
-       basket_goods.quantity,
-       price
-FROM basket_goods
-         INNER JOIN goods ON goods.id = product_id
-         INNER JOIN images ON goods.id = good_id
-where basket_id = {$basket_id}";
+                    goods.id,
+                    title_img,
+                    title_good,
+                    description,
+                    basket_goods.quantity,
+                    price
+                FROM basket_goods
+                         INNER JOIN goods ON goods.id = product_id
+                         INNER JOIN images ON goods.id = good_id
+                where basket_id = {$basket_id}";
         $connect->query($sql, 'SELECT');
         // отправляем актуальные данные корзины на фронт
         echo json_encode($connect->result);
+    }
+
+
+    public function delete (Request $request)
+    {
+        $connect = new Mysqli();
+        $cooks = $request->cookie('basket_id');
+        $product_id = (int) $request->get('id');
+        $basket_id = (int) $cooks->get() ?? null;
+        if (empty($basket_id)) {
+            echo false;
+            die();
+        }
+        $sql = "SELECT
+                    id
+                 FROM basket_goods
+                 where product_id = {$product_id} and basket_id = {$basket_id}";
+        $connect->query($sql, 'SELECT');
+        $prodInBasket = $connect->result;
+        if (count($prodInBasket)) {
+            //  Удаляем товар из корзины
+            $sql = "DELETE FROM
+                        basket_goods
+                    where product_id = {$product_id} and basket_id = {$basket_id}";
+            $connect->query($sql, 'DELETE');
+
+            //  получаем новый список товаров
+            $sql = "SELECT 
+                           goods.id,
+                           title_img,
+                           title_good,
+                           description,
+                           basket_goods.quantity,
+                           price
+                    FROM basket_goods
+                             INNER JOIN goods ON goods.id = product_id
+                             INNER JOIN images ON goods.id = good_id
+                    where basket_id = {$basket_id}";
+            $connect->query($sql, 'SELECT');
+            // отправляем актуальные данные корзины на фронт
+            echo json_encode($connect->result);
+            die();
+        }
+        echo false;
     }
 
     public function change (Request $request)

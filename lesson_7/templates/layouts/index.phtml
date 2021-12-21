@@ -116,6 +116,12 @@
 <!--                            </a>-->
 <!--                        </li>-->
                         <li>
+                            <a href="/cabinet">
+                                <i class="icon-home"></i>
+                                <!--<span class="header-action-icon-item-count">0</span>-->
+                            </a>
+                        </li>
+                        <li>
                             <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                 <i class="icon-shopping-cart"></i>
                                 <span class="header-action-icon-item-count"><?php echo count($basket); ?></span>
@@ -291,7 +297,7 @@
                     </div>
                 </div>
                 <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
+                    <a class="offcanvas-cart-item-delete product_delete" data-id="<?php echo $product['id']; ?>"><i class="fa fa-trash-o"></i></a>
                 </div>
             </li>
             <?php endforeach ?>

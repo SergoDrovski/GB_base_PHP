@@ -18,9 +18,10 @@ class Router
         '/shop' => [ShopController::class, 'index', 'GET', ['indefinite', 'user']],
         '/product/' => [ProductController::class, 'index', 'GET', ['indefinite', 'user']],
         '/product/rev' => [ProductController::class, 'saveReviews', 'POST', ['user']],
-        '/cabinet/' => [UserCabinetController::class, 'index', 'GET', ['user']],
+        '/cabinet' => [UserCabinetController::class, 'index', 'GET', ['user']],
         '/basket/index' => [BasketController::class, 'index', 'GET', ['indefinite', 'user']],
         '/basket/add' => [BasketController::class, 'add', 'POST', ['indefinite', 'user']],
+        '/basket/del' => [BasketController::class, 'delete', 'POST', ['indefinite', 'user']],
     ];
 
     static function init()
