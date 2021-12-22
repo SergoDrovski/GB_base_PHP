@@ -3,10 +3,10 @@
 namespace Src\Http;
 
 
+use Src\Http\Controllers\AuthController;
 use Src\Http\Controllers\BasketController;
 use Src\Http\Controllers\UserCabinetController;
 use Src\Services\Auth;
-use Src\Http\Controllers\AuthBegetController;
 use Src\Http\Controllers\ProductController;
 use Src\Http\Controllers\MainController;
 use Src\Http\Controllers\ShopController;
@@ -19,6 +19,9 @@ class Router
         '/product/' => [ProductController::class, 'index', 'GET', ['indefinite', 'user']],
         '/product/rev' => [ProductController::class, 'saveReviews', 'POST', ['user']],
         '/cabinet' => [UserCabinetController::class, 'index', 'GET', ['user']],
+        '/login' => [AuthController::class, 'index', 'GET', ['indefinite']],
+        '/login/auth' => [AuthController::class, 'auth', 'GET', ['indefinite']],
+        '/login/reg' => [AuthController::class, 'reg', 'POST', ['indefinite']],
         '/basket/index' => [BasketController::class, 'index', 'GET', ['indefinite', 'user']],
         '/basket/add' => [BasketController::class, 'add', 'POST', ['indefinite', 'user']],
         '/basket/del' => [BasketController::class, 'delete', 'POST', ['indefinite', 'user']],

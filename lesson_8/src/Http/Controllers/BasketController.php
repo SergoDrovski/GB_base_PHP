@@ -2,8 +2,6 @@
 
 namespace Src\Http\Controllers;
 
-use Src\Http\Cookie;
-use Src\Http\CookieNew;
 use Src\Http\Mysqli;
 use Src\Http\Request;
 use Src\Http\View;

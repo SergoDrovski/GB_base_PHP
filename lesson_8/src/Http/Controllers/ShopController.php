@@ -49,5 +49,4 @@ class ShopController
         View::view('shop', $param);
     }
 
-
 }
