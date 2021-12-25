@@ -48,16 +48,3 @@ class Auth
 
 
 }
-//$_SESSION['user'] = [
-//    'isp' => [
-//        'auth' => 12333,
-//        'date' => time(),
-//        'ip' => '123.4534.6788'],
-//
-//    'beget' => [
-//        'auth' => 'tggrtert',
-//        'log' => 'root',
-//        'pass' => 'root',
-//        'date' => 'time',
-//        'ip' => '123.4534.6788'],
-//];
