@@ -1,7 +1,7 @@
 
 //отправляем данные аутентификации
 $( document ).ready(function(){
-    $(".send_form").click(function(){
+    $(".send_log_form").click(function(){
         let formLogin = $("#login").serializeArray();
         if(!Validate(formLogin, "#login")) {
             return false;
@@ -17,6 +17,30 @@ $( document ).ready(function(){
                     location="/cabinet";
                 }
                 renderErrors(response, "#login");
+            }
+        })
+    });
+});
+
+//отправляем данные регистрации
+$(document).ready(function(){
+    $(".send_reg_form").click(function(){
+        let formLogin = $("#register").serializeArray();
+        if(!Validate(formLogin, "#register")) {
+            return false;
+        }
+        let requestUrl = $("#register").serialize();
+        $.ajax({
+            method: "POST",
+            url: "/login/reg",
+            data: requestUrl,
+            success: function(data){
+                let response = JSON.parse(data);
+                if (response === true) {
+                    location="/cabinet";
+                }
+                console.log(response);
+                renderErrors(response, "#register");
             }
         })
     });

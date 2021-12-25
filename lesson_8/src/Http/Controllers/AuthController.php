@@ -66,12 +66,6 @@ class AuthController
         $cooks->setValue("{$token}");
         $cooks->create();
         echo json_encode(true);
-
-//          $token = AuthJwt::create(2);
-//          $id = AuthJwt::getUserId($token);
-//          echo '<pre>';
-//          var_dump(AuthJwt::checkUserInSistem($id));
-//          die();
     }
 
     public function reg(Request $request, $access)
@@ -83,20 +77,19 @@ class AuthController
             echo json_encode($errors);
             die();
         }
-        $password = $form['password'];
+        $name = $form['name'];
         $email = $form['email'];
         $user = new User();
-        if (!$user->findUserByEmail($email)) {
-            $errors['email'] = 'Пользователь не найден!';
+        if ($user->findUserByEmail($email)) {
+            $errors['email'] = 'Пользователь с таким email уже есть';
             echo json_encode($errors);
             die();
         }
-        $verify = password_verify($password, $user->getPassword());
-        if (!$verify) {
-            $errors['password'] = 'Неверный пароль!';
-            echo json_encode($errors);
-            die();
-        }
+        $password = password_hash($form['password'], PASSWORD_BCRYPT);
+        $user->setName($name);
+        $user->setEmail($email);
+        $user->setPassword($password);
+        $user->create();
         $cooks = $request->cookie('token');
         $token = AuthJwt::create($user->getId());
         $cooks->setValue("{$token}");

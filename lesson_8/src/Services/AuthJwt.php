@@ -37,18 +37,16 @@ class AuthJwt
     static function getUserId(string $token_check)
     {
         $config = Configuration::forSymmetricSigner(new Sha256(), InMemory::plainText(self::$secret_key));
+        $config->parser()->parse($token_check);
         $token = $config->parser()->parse($token_check);
-        return (int) $token->claims()->get('userId');
+        return $token->claims();
     }
 
-    static function checkUserInSistem (int $userId)
+    static function checkUserInSistem (int $userId): bool
     {
-        $sql = "SELECT id
-                FROM users
-                where id = {$userId}";
+        $sql = "SELECT id FROM users where id = {$userId}";
         $connect = new Mysqli();
         $connect->query($sql, 'SELECT');
-        $param = $connect->result;
         return (bool)count($connect->result);
     }
 }

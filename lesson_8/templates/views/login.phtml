@@ -33,18 +33,18 @@
                         <form id="login" action="" method="GET" onsubmit="return false;">
                             <div class="default-form-box mb-20">
                                 <label>Ваш email <span>*</span></label>
-                                <input type="text" name="user[email]" placeholder="Ваш Email" value="<?= isset($user['email']) ? htmlspecialchars($user['email']) : ''; ?>" required>
-                                <div id="loginEmailHelpBlock" class="form-text EmailHelpBlock">
+                                <input type="text" name="user[email]" placeholder="Ваш Email" value="" required>
+                                <div class="form-text EmailHelpBlock">
                                 </div>
                             </div>
                             <div class="default-form-box mb-20">
                                 <label>Пароль <span>*</span></label>
                                 <input type="password" name="user[password]" placeholder="Ваш Пароль" value="" required>
-                                <div id="loginPasswordHelpBlock" class="form-text PasswordHelpBlock">
+                                <div class="form-text PasswordHelpBlock">
                                 </div>
                             </div>
                             <div class="login_submit">
-                                <button class="mb-20 send_form" type="submit" data-form="login">Войти</button>
+                                <button class="mb-20 send_log_form" type="submit" data-form="login">Войти</button>
                                 <label class="checkbox-default mb-20" for="offer">
                                     <input type="checkbox" id="offer">
                                     <span>Запомнить меня</span>
@@ -63,15 +63,22 @@
                         <h3>Регистрация</h3>
                         <form id="register" action="/login/reg" method="POST" onsubmit="return false;">
                             <div class="default-form-box mb-20">
+                                <label>Ваше Имя <span>*</span></label>
+                                <input type="text" name="user[name]" placeholder="Ваше Имя" value="" required>
+                            </div>
+                            <div class="default-form-box mb-20">
                                 <label>Ваш Email <span>*</span></label>
-                                <input type="text">
+                                <input type="text" name="user[email]" placeholder="Ваш Email" value="" required>
+                                <div class="form-text EmailHelpBlock">
+                                </div>
                             </div>
                             <div class="default-form-box mb-20">
                                 <label>Пароль <span>*</span></label>
-                                <input type="password">
+                                <input type="password" name="user[password]" placeholder="Ваш Пароль" value="" required>
+                                <div class="form-text PasswordHelpBlock"></div>
                             </div>
                             <div class="login_submit">
-                                <button class="send_form" type="submit" data-form="register">Регистрация</button>
+                                <button class="send_reg_form" type="submit" data-form="register">Регистрация</button>
                             </div>
                         </form>
                     </div>

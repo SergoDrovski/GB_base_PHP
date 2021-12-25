@@ -5,8 +5,6 @@ namespace Src\Http\Controllers;
 use Src\Http\Mysqli;
 use Src\Http\Request;
 use Src\Http\View;
-use Src\Services\Auth;
-use Src\Services\Validator;
 
 
 class ProductController

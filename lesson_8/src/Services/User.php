@@ -39,6 +39,7 @@ class User
             $data = ['sss', [$this->name,$this->email,$this->password]];
             $this->connect->query($sql, 'INSERT', $data);
             if (count($this->connect->result)) {
+                $this->setId($this->connect->result[0]);
                 return true;
             }
         }
