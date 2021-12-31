@@ -1,0 +1,90 @@
+
+    <!-- ...:::: Start Breadcrumb Section:::... -->
+    <div class="breadcrumb-section">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-between justify-content-md-between  align-items-center flex-md-row flex-column">
+                        <h3 class="breadcrumb-title">Войдите или зарегистрируйтесь</h3>
+                        <div class="breadcrumb-nav">
+                            <nav aria-label="breadcrumb">
+                                <ul>
+                                    <li><a href="/">Главная</a></li>
+                                    <li><a href="/">Магазин</a></li>
+                                    <li class="active" aria-current="page">Вход и регистрация</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ...:::: End Breadcrumb Section:::... -->
+
+    <!-- ...:::: Start Customer Login Section :::... -->
+    <div class="customer_login">
+        <div class="container">
+            <div class="row">
+                <!--login area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form">
+                        <h3>Вход</h3>
+                        <form id="login" action="" method="GET" onsubmit="return false;">
+                            <div class="default-form-box mb-20">
+                                <label>Ваш email <span>*</span></label>
+                                <input type="text" name="user[email]" placeholder="Ваш Email" value="" required>
+                                <div class="form-text EmailHelpBlock">
+                                </div>
+                            </div>
+                            <div class="default-form-box mb-20">
+                                <label>Пароль <span>*</span></label>
+                                <input type="password" name="user[password]" placeholder="Ваш Пароль" value="" required>
+                                <div class="form-text PasswordHelpBlock">
+                                </div>
+                            </div>
+                            <div class="login_submit">
+                                <button class="mb-20 send_log_form" type="submit" data-form="login">Войти</button>
+                                <label class="checkbox-default mb-20" for="offer">
+                                    <input type="checkbox" id="offer">
+                                    <span>Запомнить меня</span>
+                                </label>
+                                <a href="#">Забыли пароль?</a>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--login area start-->
+
+                <!--register area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form register">
+                        <h3>Регистрация</h3>
+                        <form id="register" action="/login/reg" method="POST" onsubmit="return false;">
+                            <div class="default-form-box mb-20">
+                                <label>Ваше Имя <span>*</span></label>
+                                <input type="text" name="user[name]" placeholder="Ваше Имя" value="" required>
+                            </div>
+                            <div class="default-form-box mb-20">
+                                <label>Ваш Email <span>*</span></label>
+                                <input type="text" name="user[email]" placeholder="Ваш Email" value="" required>
+                                <div class="form-text EmailHelpBlock">
+                                </div>
+                            </div>
+                            <div class="default-form-box mb-20">
+                                <label>Пароль <span>*</span></label>
+                                <input type="password" name="user[password]" placeholder="Ваш Пароль" value="" required>
+                                <div class="form-text PasswordHelpBlock"></div>
+                            </div>
+                            <div class="login_submit">
+                                <button class="send_reg_form" type="submit" data-form="register">Регистрация</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--register area end-->
+            </div>
+        </div>
+    </div>
+    <!-- ...:::: End Customer Login Section :::... -->

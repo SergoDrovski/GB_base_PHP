@@ -1,0 +1,22 @@
+{
+    "name": "shop/api",
+    "description": "shop first",
+    "authors": [
+        {
+            "name": "sergei",
+            "email": "sergiodrovski@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    },
+    "require": {
+      "ext-mysqli": "*",
+        "lcobucci/jwt": "^4.1",
+        "firebase/php-jwt": "^5.5",
+      "ext-sodium": "*",
+      "ext-openssl": "*"
+    }
+}
